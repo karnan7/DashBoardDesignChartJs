@@ -167,7 +167,7 @@ const FirstIcons = styled.div`
     color:#5D9CE5;
     padding: 5px;
     background: #fff;
-    border-radius: 13px;
+    border-radius: 11px;
     cursor:pointer;
   }
   .temp-icons{
@@ -184,7 +184,7 @@ const FirstIcons = styled.div`
 const PlaceSection = styled.div`
   display: flex;
   justify-content:space-between;
-
+  pointer-events:none;
   .time,
   .place{
     display: flex;
@@ -208,6 +208,7 @@ const Temperature = styled.div`
     flex-direction: column;
     justify-content:center;
     gap: 20px;
+    pointer-events:none;
 
     h1{
       font-size:60px;
@@ -241,7 +242,9 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-const LeftHeader = styled.div``
+const LeftHeader = styled.div`
+  pointer-events:none;
+`
 const RightHeader = styled.div`
   display: flex;
   gap: 15px;
@@ -252,6 +255,7 @@ const Profile = styled.img`
   height: 50px;
   background-size: cover;
   border-radius: 13px;
+  cursor: pointer;
 `
 const Chart = styled.div`
   height: 300px;
@@ -267,6 +271,7 @@ const ChartTitle = styled.div`
   gap:30px;
   h3{
     flex:1;
+    pointer-events:none;
   }
 `
 const RainFilter = styled.div`
@@ -289,6 +294,7 @@ const NextFilter = styled(RainFilter)`
 const WeatherFactors = styled.div`
   h3{
     margin: 25px 0px;
+    pointer-events:none;
   }
 `
 const Columns = styled.div`
@@ -305,6 +311,11 @@ const Wrap =styled.div`
     display:flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
+
+    h5{
+      pointer-events:none;
+    }
 `
 const WrapTitle = styled.div`
   width:100%;
