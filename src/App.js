@@ -35,12 +35,12 @@ function App() {
               </div>
             </PlaceSection>
             <Temperature>
-              <FaChevronLeft style={{cursor:"pointer"}} size="20"/>
+              <FaChevronLeft style={{cursor:"pointer", color:"#9DC3EF"}} size="20"/>
               <div class='temp-value'>
                 <h1>27<TbTemperatureCelsius/></h1>
                 <span><BsSun/>Sunny</span>
               </div>
-              <FaChevronRight style={{cursor:"pointer"}} size="20"/>
+              <FaChevronRight style={{cursor:"pointer", color:"#9DC3EF"}} size="20"/>
             </Temperature>
           </Weather>
         </LeftSection>
@@ -211,12 +211,12 @@ const Temperature = styled.div`
 
     h1{
       font-size:60px;
-      
     }
     span{
       display: flex;
       align-items:center;
       gap: 5px;
+      margin-left: 10px;
     }
   }
 `
