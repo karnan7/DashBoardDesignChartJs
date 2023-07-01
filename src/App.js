@@ -118,7 +118,7 @@ function App() {
           </RightValue>
         </RightSection>
       </Dashboard>
-      {/* <FeelsLike/> */}
+      <FeelsLike/>
     </Container>
   );
 }
