@@ -82,7 +82,7 @@ const FeelsLike = () => {
             ctx.moveTo(xPos - singleUnit * data.datasets[0].mid, 0);
 
             ctx.restore();
-
+            
             ctx.font = '500 20px sans-serif';
             ctx.fillStyle = 'black';
             ctx.textAlign = 'center';
