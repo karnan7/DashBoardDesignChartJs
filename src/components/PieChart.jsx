@@ -8,12 +8,12 @@ const PieChart = () => {
     const data = {
         labels: [0, 5, 10, 20, 30, 40],
         datasets: [{
-            label: "wind",
-            data: [5, 10, 20, 30, 40],
+            label: [0, 5, 10, 20, 30, 40],
+            data: [10, 10, 10, 10, 10],
             circumference:180,
             rotation: 270,
             cutout: "85%",
-            needleValue: 8,
+            needleValue: 4,
             spacing: 10,
             borderRadius: 15,
             backgroundColor: "#5C9CE5"
@@ -37,7 +37,7 @@ const PieChart = () => {
             const dataTotal = data.datasets[0].data.reduce((a,b) => a + b, 0)
             const circumference = (((chart.getDatasetMeta(0).data[0].circumference/Math.PI)/data.datasets[0].data[0]) * needleValue);
 
-            ctx.translate(xCenter , (yCenter - 25));
+            ctx.translate(xCenter , (yCenter - 17));
             ctx.rotate(Math.PI * (circumference + 1.5 ) )
 
             // arrow
@@ -73,7 +73,7 @@ const PieChart = () => {
             const percentageValue = circumference * 100;
 
             // flowMeter
-            ctx.font = '500 20px sans-serif';
+            ctx.font = '500 15px sans-serif';
             ctx.fillStyle = 'black';
             ctx.textAlign = 'center'
             ctx.fillText(`${percentageValue.toFixed(0)} km/h`, xCenter, yCenter)
@@ -88,6 +88,11 @@ const PieChart = () => {
             },
             tooltip:{
                 enabled: false,
+            }
+        },
+        scales:{
+            y:{
+                display: false,
             }
         }
     }

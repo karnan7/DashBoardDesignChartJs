@@ -7,6 +7,7 @@ import { TbUmbrella, TbTemperatureCelsius, TbTemperatureFahrenheit, TbLocation }
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import { FiMoreHorizontal, FiWind } from 'react-icons/fi'
 import { LuDroplets, LuCloudRain } from 'react-icons/lu'
+import FeelsLike from "./components/FeelsLike";
 
 
 function App() {
@@ -117,6 +118,7 @@ function App() {
           </RightValue>
         </RightSection>
       </Dashboard>
+      {/* <FeelsLike/> */}
     </Container>
   );
 }
@@ -235,6 +237,9 @@ const RightValue = styled.div`
   align-items: space-between;
   gap: 30px;
   color:#3B3B3B;
+  @media(max-width: 1500px){
+    gap: 20px;
+  }
 `
 
 const Header = styled.div`
@@ -263,6 +268,10 @@ const Chart = styled.div`
   background: #fff;
   padding: 20px;
   border-radius: 30px;
+
+  @media(max-width: 1500px) {
+    height: 250px;
+  }
 `
 const ChartTitle = styled.div`
   display: flex;
@@ -295,12 +304,20 @@ const WeatherFactors = styled.div`
   h3{
     margin: 25px 0px;
     pointer-events:none;
+
+    @media(max-width: 1500px){
+      margin: 0px 0px 15px 0px;
+    }
   }
 `
 const Columns = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 30px;
+
+  @media(max-width: 1500px){
+    gap: 20px;
+  }
 `
 const Wrap =styled.div`
     height: 150px;
@@ -312,6 +329,9 @@ const Wrap =styled.div`
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    @media(max-width: 1500px){
+      height: 120px;
+    }
 
     h5{
       pointer-events:none;
@@ -330,5 +350,11 @@ const WrapTitle = styled.div`
     padding: 5px;
     border-radius:10px;
     color: white;
+
+    @media(max-width: 1500px){
+      width: 20px;
+      height: 20px;
+      border-radius:5px;
+    }
   }
 `
