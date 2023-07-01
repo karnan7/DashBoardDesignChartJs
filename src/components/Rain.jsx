@@ -1,8 +1,24 @@
 import React from 'react'
 
 const Rain = () => {
+    const data = {
+        labels: [],
+        datasets:  {
+            labels: [],
+            data: [],
+        }
+    }
+
+    const options = {
+
+    }
   return (
-    <div>Rain</div>
+    <div>
+        <Bar
+        data={data}
+        options={options}
+        />
+    </div>
   )
 }
 
