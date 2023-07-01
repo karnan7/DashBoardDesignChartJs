@@ -88,13 +88,8 @@ const PieChart = () => {
             },
             tooltip:{
                 enabled: false,
-            }
+            },
         },
-        scales:{
-            y:{
-                display: false,
-            }
-        }
     }
   return (
     <div style={{width:"80%", height:"90%"}}>
