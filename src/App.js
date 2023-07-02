@@ -75,6 +75,7 @@ function App() {
                     <h5>Humidity</h5>
                     <LuDroplets className="col-icon"/>
                   </WrapTitle>
+                  <h4>82% <span>bad</span></h4>
                 </Wrap>
 
                 <Wrap>
@@ -90,6 +91,7 @@ function App() {
                     <h5>Precipitation</h5>
                     <LuCloudRain className="col-icon"/>
                   </WrapTitle>
+                  <h4>1.4 cm</h4>
                 </Wrap>
 
                 <Wrap>
@@ -97,6 +99,7 @@ function App() {
                     <h5>UV Index</h5>
                     <BsSun className="col-icon"/>
                   </WrapTitle>
+                  <h4>4 medium</h4>
                 </Wrap>
 
                 <Wrap>
@@ -104,6 +107,7 @@ function App() {
                     <h5>Feels Like</h5>
                     <BsThermometerHigh className="col-icon"/>
                   </WrapTitle>
+                  <FeelsLike/>
                 </Wrap>
 
                 <Wrap>
@@ -111,6 +115,7 @@ function App() {
                     <h5>Chance Of Rain</h5>
                     <TbUmbrella className="col-icon"/>
                   </WrapTitle>
+                  <h4>42%</h4>
                 </Wrap>
 
               </Columns>

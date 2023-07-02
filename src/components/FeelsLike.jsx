@@ -6,20 +6,16 @@ const FeelsLike = () => {
     const data = {
         labels: [0],
         datasets:[{
-            labels: [100],
-            data: [50],
+            labels: [0, 25, 50],
+            data: [30, 50],
             borderRadius: 25,
             borderSkipped:"false",
-            barPercentage: 0.05,
+            barPercentage: 0.1,
             backgroundColor: "#5C9CE5",
-            high:50,
-            mid: 25,
-            low: 0,
-            current: 30
-        }]
+        }],
     }
     const options ={
-        aspectRatio: 1.5,
+        aspectRatio: 3,
         plugins: {
             legend: {
                 display: false,
@@ -31,6 +27,11 @@ const FeelsLike = () => {
         indexAxis: 'y',
         scales: {
             x: {
+                ticks: {
+                    callback: function(val, index) {
+                        return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                    }
+                },
                 grid: {
                     display: false,
                 },
@@ -39,6 +40,9 @@ const FeelsLike = () => {
                 },
             },
             y: {
+                ticks: {
+                    display: false,
+                },
                 beginAtZero: true,
                 grid: {
                     display: false,
@@ -49,52 +53,39 @@ const FeelsLike = () => {
             },
         }
     }
-    const horizontalBackgroundPlugin = {
-        id: 'horizontalBackgroundPlugin',
-        beforeDatasetsDraw(chart, args, plugins) {
-            const {ctx, chartArea:{top, bottom, left, right, width, height}, scales: {x, y}} = chart;
 
-            const barPercentage = data.datasets[0].barPercentage || 0.9;
-            const categoryPercentage = data.datasets[0].categoryPercentage || 0.8;
-            const barThickness = height / data.labels.length * barPercentage * categoryPercentage;
+
+    const progressBar = {
+        id: "progressBar",
+        beforeDatasetsDraw: ((chart, args, plugins) => {
+            const { ctx, data, chartArea:{top, bottom, left, right, width, height }, scales:{ x, y } } = chart;
 
             ctx.save();
-            ctx.fillStyle = '#DCDCDC';
-            ctx.fillRect(left, y.getPixelForValue(0) - barThickness / 2, width, barThickness)
-        }
-    }
 
-    const lines = {
-        id: "lines",
-        afterDatasetsDraw(chart, args, plugins) {
-            const {ctx, chartArea:{top, bottom, left, right, width, height} } = chart;
+            const barThickness = height / data.labels.length;
 
-            ctx.save();
-            const xPos = chart.getDatasetMeta(0).data[0].x;
-            const yPos = chart.getDatasetMeta(0).data[0].y;
+            chart.getDatasetMeta(0).data.forEach((datapoint, index) => {
+                
+                console.log(datapoint)
+                datapoint.y = top + (barThickness * (index + 0.95))
 
-            const singleUnit = width / data.datasets[0].data[0];
-            console.log(singleUnit);
+                // shape //
+                ctx.beginPath();
+                ctx.strokeStyle = '#DCDCDC';
+                ctx.fillStyle = '#DCDCDC';
+                ctx.lineWidth = datapoint.height * 0.8;
+                ctx.lineJoin = 'round';
+                ctx.strokeRect(left + 15, datapoint.y, width - 30, 1)
+            })
 
-            ctx.translate(xPos, yPos);
-
-            ctx.beginPath();
-            ctx.moveTo(xPos - singleUnit * data.datasets[0].mid, 0);
-
-            ctx.restore();
-            
-            ctx.font = '500 20px sans-serif';
-            ctx.fillStyle = 'black';
-            ctx.textAlign = 'center';
-            ctx.fillText('po', xPos -20, yPos);
-        }
+        })
     }
   return (
-    <div>
+    <div style={{width: "150px"}}>
         <Bar
         data={data}
         options={options}
-        plugins={[horizontalBackgroundPlugin, lines]}/>
+        plugins={[progressBar]}/>
     </div>
   )
 }
